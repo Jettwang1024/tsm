@@ -1,0 +1,107 @@
+<form [formGroup]="memberDetailForm" (ngSubmit)="onSubmit()">
+  <div style="background-color: rgb(231, 228, 228); padding: 20px;">
+    <h2>會員詳情</h2>
+    <table class="form-table" style="width: 100%; background-color: rgb(231, 228, 228);">
+      <tr>
+        <td style="width: 10%;">會員編號:</td>
+        <td style="width: 15%;"><input pInputText type="text" formControlName="memberId" style="width: 100%;" /></td>
+        <td style="width: 10%;">生日:</td>
+        <td style="width: 15%;"><input pInputText type="text" formControlName="birthday" style="width: 100%;" /></td>
+        <td style="width: 10%;">性別:</td>
+        <td style="width: 15%;"><input pInputText type="text" formControlName="gender" style="width: 100%;" /></td>
+      </tr>
+      <tr>
+        <td style="width: 10%;">會員暱稱:</td>
+        <td colspan="2" style="width: 25%;"><input pInputText type="text" formControlName="nickname" style="width: 100%;" /></td>
+        <td style="width: 10%;">密碼:</td>
+        <td colspan="2" style="width: 25%;"><input pInputText type="text" formControlName="password" style="width: 100%;" /></td>
+      </tr>
+      <tr>
+        <td style="width: 10%;">會員級別:</td>
+        <td colspan="2" style="width: 25%;"><input pInputText type="text" formControlName="memberLevel" style="width: 100%;" /></td>
+        <td style="width: 10%;">狀態:</td>
+        <td colspan="2" style="width: 25%;"><input pInputText type="text" formControlName="status" style="width: 100%;" /></td>
+      </tr>
+      <tr>
+        <td style="width: 10%;">EMail:</td>
+        <td colspan="2" style="width: 25%;"><input pInputText type="text" formControlName="email" style="width: 100%;" /></td>
+        <td style="width: 10%;">電話:</td>
+        <td colspan="2" style="width: 25%;"><input pInputText type="text" formControlName="phoneNumber" style="width: 100%;" /></td>
+      </tr>
+      <tr>
+        <td style="width: 10%;">婚姻狀況:</td>
+        <td colspan="2" style="width: 25%;"><input pInputText type="text" formControlName="maritalStatus" style="width: 100%;" /></td>
+        <td style="width: 10%;">行動電話:</td>
+        <td colspan="2" style="width: 25%;"><input pInputText type="text" formControlName="mobilePhone" style="width: 100%;" /></td>
+      </tr>
+      <tr>
+        <td style="width: 10%;">教育狀況:</td>
+        <td colspan="2" style="width: 25%;"><input pInputText type="text" formControlName="education" style="width: 100%;" /></td>
+        <td style="width: 10%;">任職公司:</td>
+        <td colspan="2" style="width: 25%;"><input pInputText type="text" formControlName="company" style="width: 100%;" /></td>
+      </tr>
+      <tr>
+        <td style="width: 10%;">圖檔:</td>
+        <td colspan="2" style="width: 25%;"><input pInputText type="text" formControlName="imageFile" style="width: 100%;" /></td>
+        <td style="width: 10%;">UUID:</td>
+        <td colspan="2" style="width: 25%;"><input pInputText type="text" formControlName="uuid" style="width: 100%;" /></td>
+      </tr>
+      <tr>
+        <td style="width: 10%;">備註:</td>
+        <td colspan="5" style="width: 90%;"><input pInputText type="text" formControlName="remarks" style="width: 100%;" /></td>
+      </tr>
+    </table>
+
+    <div style="display: flex; justify-content: center; margin-top: 20px;">
+      <table class="form-table" border="3" style="width: 70%; background-color: pink;" [formGroup]="recommenderForm">
+        <tr>
+          <td style="width: 10%;">註冊日期:</td>
+          <td style="width: 15%;"><input pInputText type="text" formControlName="registrationDate" style="width: 100%;" /></td>
+          <td style="width: 10%;">註冊單位:</td>
+          <td style="width: 15%;"><input pInputText type="text" formControlName="registrationUnit" style="width: 100%;" /></td>
+        </tr>
+        <tr>
+          <td style="width: 10%;">推薦人:</td>
+          <td style="width: 15%;"><input pInputText type="text" formControlName="recommender" style="width: 100%;" /></td>
+          <td style="width: 10%;">推薦碼:</td>
+          <td style="width: 15%;"><input pInputText type="text" formControlName="referralCode" style="width: 100%;" /></td>
+        </tr>
+      </table>
+    </div>
+
+    <table style="width: 100%; margin-top: 20px;">
+      <tr>
+        <td style="width: 30%;"><img src="assets/images/p2.png" alt="示例圖片" style="width: 80%;" /></td>
+        <td colspan="2" style="width: 50%;">
+          <p-table [value]="cartail" styleClass="p-datatable-header">
+            <ng-template pTemplate="header">
+              <tr class="blue-header">
+                <th>車號</th>
+                <th>廠牌</th>
+                <th>車主姓名</th>
+                <th>顏色</th>
+                <th>車型</th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-cartail>
+              <tr>
+                <td>{{ cartail.carNumber }}</td>
+                <td>{{ cartail.brand }}</td>
+                <td>{{ cartail.ownerName }}</td>
+                <td>{{ cartail.color }}</td>
+                <td>{{ cartail.model }}</td>
+              </tr>
+            </ng-template>
+          </p-table>
+          <div style="text-align: center; margin-top: 20px;">
+            <h5 class="mileage">累積里程數10,000km</h5>
+          </div>
+        </td>
+        <td style="width: 20%; text-align: right; vertical-align: bottom;">
+          <button pButton type="submit" label="存檔" class="p-button-success" (click)="save()"></button>
+          <button pButton type="button" label="取消" class="p-button-secondary" (click)="cancel()" style="margin-left: 10px;"></button>
+        </td>
+      </tr>
+    </table>
+  </div>
+</form>

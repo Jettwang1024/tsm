@@ -1,1 +1,68 @@
-/* You can add global styles to this file, and also import other style files */
+body, html {
+    margin: 0;
+    height: 100%;
+    overflow: hidden;
+  }
+  
+  .container {
+    display: flex;
+    height: 100vh;
+  }
+  
+  p-sidebar {
+    flex: 0 0 125px;
+    height: 100%;
+  }
+  
+  .content {
+    flex: 1;
+    padding: 10px;
+    overflow: auto;
+  }
+  
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  li {
+    cursor: pointer;
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  li:hover {
+    background-color: #f0f0f0;
+  }
+  /* 定義表格邊框 */
+.p-datatable table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+/* 定義表格行的邊框 */
+.p-datatable-thead > tr > th,
+.p-datatable-tbody > tr > td,
+.p-datatable-tfoot > tr > td {
+  border: 1px solid #dcdcdc;
+  padding: 8px;
+}
+
+/* 定義表格頭部的邊框 */
+.p-datatable-thead > tr > th {
+  background-color: #f9f9f9;
+  font-weight: bold;
+}
+
+/* 定義表格行的樣式 */
+.p-datatable-tbody > tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+/* 定義表格底部的邊框 */
+.p-datatable-tfoot > tr > td {
+  background-color: #f9f9f9;
+  font-weight: bold;
+}

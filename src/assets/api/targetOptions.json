@@ -1,0 +1,14 @@
+[
+  {
+    "label": "序號領取",
+    "value": "targetBySerial"
+  },
+  {
+    "label": "系統派贈",
+    "value": "targetBySystem"
+  },
+  {
+    "label": "其他選項",
+    "value": "otherOption"
+  }
+]

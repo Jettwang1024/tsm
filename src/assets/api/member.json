@@ -1,0 +1,32 @@
+[
+  {
+    "memberID": "001",
+    "nickname": "John Doe",
+    "birthdayMonth": "01-1990",
+    "phoneNumber": "1234567890",
+    "mobileNumber": "0987654321",
+    "registrationUnit": "Unit A",
+    "registrationDate": "2020-01-01",
+    "region": "Region 1"
+  },
+  {
+    "memberID": "002",
+    "nickname": "Jane Doe",
+    "birthdayMonth": "02-1992",
+    "phoneNumber": "2345678901",
+    "mobileNumber": "0876543219",
+    "registrationUnit": "Unit B",
+    "registrationDate": "2021-02-01",
+    "region": "Region 2"
+  },
+  {
+    "memberID": "003",
+    "nickname": "Wang",
+    "birthdayMonth": "02-1992",
+    "phoneNumber": "2345678901",
+    "mobileNumber": "0876543219",
+    "registrationUnit": "Unit B",
+    "registrationDate": "2021-02-01",
+    "region": "Region 2"
+  }
+]

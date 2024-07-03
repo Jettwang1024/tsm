@@ -1,0 +1,58 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  .search-container {
+    background-color: #f5f5f5; /* 灰色背景 */
+    padding: 20px;
+    border-radius: 8px;
+  }
+  
+  .form-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  
+  .form-table td {
+    padding: 10px;
+  }
+  
+  .p-inputtext {
+    width: 100%;
+    padding: 5px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .p-inputtext:focus {
+    border-color: #66afe9;
+    outline: none;
+    box-shadow: 0 0 8px rgba(102, 175, 233, 0.6);
+  }
+  
+  .p-datatable-header {
+    border: 1px solid #ccc;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  .p-datatable-header .blue-header th,
+  .p-datatable-header tr td {
+    border: 1px solid #ccc;
+    padding: 8px;
+  }
+  
+  .blue-header th {
+    background-color: rgb(43, 175, 232) !important;
+    color: white !important;
+  }
+  
+  .button-container {
+    text-align: right;
+    padding-top: 10px;
+  }
+  

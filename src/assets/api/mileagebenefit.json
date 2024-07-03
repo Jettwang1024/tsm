@@ -1,0 +1,29 @@
+[
+  {
+    "availableMileage": "1000",
+    "eventName": "活動1",
+    "mileage": "100",
+    "expirationDate": "2024-12-31",
+    "usageStatus": "已使用",
+    "usageDate": "2024-06-20",
+    "usageUnit": "單位1"
+  },
+  {
+    "availableMileage": "2000",
+    "eventName": "活動2",
+    "mileage": "200",
+    "expirationDate": "2025-01-31",
+    "usageStatus": "未使用",
+    "usageDate": "",
+    "usageUnit": "單位2"
+  },
+  {
+    "availableMileage": "3000",
+    "eventName": "活動3",
+    "mileage": "300",
+    "expirationDate": "2025-01-31",
+    "usageStatus": "未使用",
+    "usageDate": "",
+    "usageUnit": "單位3"
+  }
+]

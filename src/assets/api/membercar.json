@@ -1,0 +1,24 @@
+[
+    {
+      "carNumber": "AB1234",
+      "brand": "Toyota",
+      "ownerName": "John Doe",
+      "color": "Red",
+      "model": "Sedan"
+    },
+    {
+      "carNumber": "CD5678",
+      "brand": "Honda",
+      "ownerName": "Jane Smith",
+      "color": "Blue",
+      "model": "SUV"
+    },
+    {
+      "carNumber": "EF0857",
+      "brand": "Mercedes-Benz",
+      "ownerName": "Wang Sam",
+      "color": "Green",
+      "model": "CUV"
+    }
+  ]
+  

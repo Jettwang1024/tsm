@@ -1,13 +1,42 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'test-routing-project';
+  visibleSidebar: boolean = true;
+
+  constructor(private router: Router) {}
+
+  navigateToMileage() {
+    this.visibleSidebar = true;
+    this.router.navigate(['/pages/mileage']);
+  }
+  navigateToSubscribe() {
+    this.visibleSidebar = true;
+    this.router.navigate(['/pages/subscribe']);
+  }
+  navigateToMember() {
+    this.visibleSidebar = true;
+    this.router.navigate(['/pages/member']);
+  }
+  navigateToRights() {
+    this.visibleSidebar = true;
+    this.router.navigate(['/pages/rights']);
+  }
+  navigateToSetmileage() {
+    this.visibleSidebar = true;
+    this.router.navigate(['/pages/setmileage']);
+  }
+  navigateToActupdate() {
+    this.visibleSidebar = true;
+    this.router.navigate(['/pages/actupdate']);
+  }
+  navigateToActsend() {
+    this.visibleSidebar = true;
+    this.router.navigate(['/pages/actsend']);
+  }
 }

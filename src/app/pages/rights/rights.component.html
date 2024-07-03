@@ -1,0 +1,58 @@
+<!-- rights.component.html -->
+<h2>里程權益</h2>
+<div class="result-container">
+  <p-table [value]="rights" styleClass="p-datatable-header">
+    <ng-template pTemplate="header">
+      <tr class="blue-header">
+        <th>可用里程</th>
+        <th>活動名稱</th>
+        <th>里程數</th>
+        <th>有效期限</th>
+        <th>使用狀況</th>
+        <th>使用日期</th>
+        <th>使用單位</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rights>
+      <tr>
+          <td>{{ rights.availableMileage }}</td>
+          <td>{{ rights.eventName }}</td>
+          <td>{{ rights.mileage }}</td>
+          <td>{{ rights.expirationDate }}</td>
+          <td>{{ rights.usageStatus }}</td>
+          <td>{{ rights.usageDate }}</td>
+          <td>{{ rights.usageUnit }}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
+<h2>可用里程數: {{ totalMileageKm }} km</h2>
+
+<h2>票卷權益</h2>
+<div class="result-container">
+  <p-table [value]="rights" styleClass="p-datatable-header">
+    <ng-template pTemplate="header">
+      <tr class="blue-header">
+        <th>可用里程</th>
+        <th>活動名稱</th>
+        <th>里程數</th>
+        <th>有效期限</th>
+        <th>使用狀況</th>
+        <th>使用日期</th>
+        <th>使用單位</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rights>
+      <tr>
+          <td>{{ rights.availableMileage }}</td>
+          <td>{{ rights.eventName }}</td>
+          <td>{{ rights.mileage }}</td>
+          <td>{{ rights.expirationDate }}</td>
+          <td>{{ rights.usageStatus }}</td>
+          <td>{{ rights.usageDate }}</td>
+          <td>{{ rights.usageUnit }}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
+<h2>可用票卷: {{ ticketCount }} 張</h2>

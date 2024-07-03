@@ -1,0 +1,29 @@
+[
+  {
+    "actNumber": "001",
+    "actName": "活動1",
+    "productNumber": "P001",
+    "setDate": "2024-06-01",
+    "receiveDate": "2024-06-10",
+    "expiryDate": "2024-12-31",
+    "target": "所有會員"
+  },
+  {
+    "actNumber": "002",
+    "actName": "活動2",
+    "productNumber": "P002",
+    "setDate": "2024-07-01",
+    "receiveDate": "2024-07-10",
+    "expiryDate": "2025-01-31",
+    "target": "新會員"
+  },
+  {
+    "actNumber": "003",
+    "actName": "活動3",
+    "productNumber": "P003",
+    "setDate": "2024-07-01",
+    "receiveDate": "2024-07-10",
+    "expiryDate": "2025-01-31",
+    "target": "新會員"
+  }
+]

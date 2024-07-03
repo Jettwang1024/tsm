@@ -1,0 +1,99 @@
+<div class="radio-container">
+    <div class="radio-group" style="background-color: rgb(231, 228, 228)">
+      <p-radioButton name="info" value="gender" label="性別" [(ngModel)]="selectedInfo" (onClick)="onRadioSelect()"></p-radioButton>
+      <p-radioButton name="info" value="phone" label="手機號碼" [(ngModel)]="selectedInfo" (onClick)="onRadioSelect()"></p-radioButton>
+      <p-radioButton name="info" value="birthday" label="生日" [(ngModel)]="selectedInfo" (onClick)="onRadioSelect()"></p-radioButton>
+      <p-radioButton name="info" value="address" label="地址" [(ngModel)]="selectedInfo" (onClick)="onRadioSelect()"></p-radioButton>
+      <p-radioButton name="info" value="registrationDate" label="註冊日期區間" [(ngModel)]="selectedInfo" (onClick)="onRadioSelect()"></p-radioButton>
+      <p-radioButton name="info" value="lastLoginDate" label="最後登入日期區間" [(ngModel)]="selectedInfo" (onClick)="onRadioSelect()"></p-radioButton>
+      <p-radioButton name="info" value="memberStatus" label="會員狀態" [(ngModel)]="selectedInfo" (onClick)="onRadioSelect()"></p-radioButton>
+      <p-radioButton name="info" value="spendingAmount" label="消費金額額度區間" [(ngModel)]="selectedInfo" (onClick)="onRadioSelect()"></p-radioButton>
+      <p-radioButton name="info" value="firstSubscriptionGift" label="首次訂閱大禮包" [(ngModel)]="selectedInfo" (onClick)="onRadioSelect()"></p-radioButton>
+    </div>
+  
+    <div class="radio-details">
+      <div *ngIf="selectedInfo === 'gender'" class="detail-section">
+        <p-radioButton name="gender" value="male" label="男" [(ngModel)]="formData.gender"></p-radioButton>
+        <p-radioButton name="gender" value="female" label="女" [(ngModel)]="formData.gender"></p-radioButton>
+        <p-radioButton name="gender" value="unknown" label="未知" [(ngModel)]="formData.gender"></p-radioButton>
+      </div>
+      <div *ngIf="selectedInfo === 'phone'" class="detail-section">
+        <input pInputText type="text" [(ngModel)]="formData.phoneNumber" placeholder="0987654321" />
+      </div>
+      <div *ngIf="selectedInfo === 'birthday'" class="detail-section">
+        <p-calendar [(ngModel)]="formData.birthdayStart" dateFormat="yy-mm-dd" placeholder="起始日"></p-calendar>
+        ~
+        <p-calendar [(ngModel)]="formData.birthdayEnd" dateFormat="yy-mm-dd" placeholder="結束日"></p-calendar>
+      </div>
+      <div *ngIf="selectedInfo === 'address'" class="detail-section">
+        <p-dropdown [options]="cities" [(ngModel)]="formData.city" placeholder="選擇城市"></p-dropdown>
+      </div>
+      <div *ngIf="selectedInfo === 'registrationDate'" class="detail-section">
+        <p-calendar [(ngModel)]="formData.registrationStart" dateFormat="yy-mm-dd" placeholder="起始日"></p-calendar>
+        ~
+        <p-calendar [(ngModel)]="formData.registrationEnd" dateFormat="yy-mm-dd" placeholder="結束日"></p-calendar>
+      </div>
+      <div *ngIf="selectedInfo === 'lastLoginDate'" class="detail-section">
+        <p-calendar [(ngModel)]="formData.lastLoginStart" dateFormat="yy-mm-dd" placeholder="起始日"></p-calendar>
+        ~
+        <p-calendar [(ngModel)]="formData.lastLoginEnd" dateFormat="yy-mm-dd" placeholder="結束日"></p-calendar>
+      </div>
+      <div *ngIf="selectedInfo === 'memberStatus'" class="detail-section">
+        <p-radioButton name="memberStatus" value="subscribed" label="訂閱" [(ngModel)]="formData.memberStatus"></p-radioButton>
+        <p-radioButton name="memberStatus" value="free" label="免費" [(ngModel)]="formData.memberStatus"></p-radioButton>
+      </div>
+      <div *ngIf="selectedInfo === 'spendingAmount'" class="detail-section">
+        <input pInputText type="text" [(ngModel)]="formData.spendingStart" placeholder="金額起始" />
+        ~
+        <input pInputText type="text" [(ngModel)]="formData.spendingEnd" placeholder="金額結束" />
+      </div>
+    </div>
+  
+    <div class="button-group">
+      <button pButton type="button" label="清除條件" class="p-button-secondary" (click)="clearSelection()"></button>
+      <button pButton type="button" label="查詢" class="p-button-primary" (click)="search()"></button>
+      <button pButton type="button" label="確認名單" class="p-button-primary" (click)="confirmList()"></button>
+    </div>
+  </div>
+  
+  <table>
+    <tr>
+      <td colspan="3">
+        <p-table [value]="actupdate" styleClass="p-datatable-header">
+          <ng-template pTemplate="header">
+            <tr class="blue-header">
+              <th>活動<br>編號</th>
+              <th>會員編號</th>
+              <th>會員暱稱</th>
+              <th>生日年月</th>
+              <th>區域</th>
+              <th>行動電話</th>
+              <th>註冊單位</th>
+              <th>註冊日期</th>
+              <th>最後登入日</th>
+              <th>會員狀態</th>
+              <th>累積消費金額</th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-actupdate>
+            <tr>
+              <td>{{ actupdate.id }}</td>
+              <td>{{ actupdate.memberNumber }}</td>
+              <td>{{ actupdate.memberName }}</td>
+              <td>{{ actupdate.birthday }}</td>
+              <td>{{ actupdate.region }}</td>
+              <td>{{ actupdate.mobilePhone }}</td>
+              <td>{{ actupdate.registrationUnit }}</td>
+              <td>{{ actupdate.registrationDate }}</td>
+              <td>{{ actupdate.lastLoginDate }}</td>
+              <td>{{ actupdate.memberStatus }}</td>
+              <td>{{ actupdate.totalSpent }}</td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </td>
+    </tr>
+  </table>
+  
+  <h3>符合篩選人數計5,000人</h3>
+  
