@@ -13,7 +13,9 @@ export class ActupdateComponent implements OnInit {
   actForm: FormGroup;
   actupdatetable: Actupdatetable[] = [];
   targetOptions: any[] = [];
+  fileName: string = '';
   imagePreview: string | ArrayBuffer | null = null;
+  noFileSelectedText: string = '未選擇任何檔案';
 
   constructor(private router: Router, private fb: FormBuilder, private http: HttpClient) {
     this.actForm = this.fb.group({
@@ -29,7 +31,8 @@ export class ActupdateComponent implements OnInit {
       imageName: ['summer_sale.png'],
       description: ['Join our Summer Sale event and earn 1000 miles!'],
       testCheckbox: [false],
-      targets: this.fb.array([]) // 初始化為空數組，稍後動態添加控件
+      targets: this.fb.array([]), // 初始化為空數組，稍後動態添加控件
+      targetBySerial: [false]
     });
   }
 
@@ -45,7 +48,7 @@ export class ActupdateComponent implements OnInit {
   loadTargetOptions() {
     this.http.get<any[]>('/assets/api/targetOptions.json').subscribe(data => {
       this.targetOptions = data;
-      this.targetOptions.forEach((option) => {
+      this.targetOptions.forEach((option, index) => {
         this.targets.push(this.fb.control(false));
       });
     }, error => {
@@ -53,15 +56,23 @@ export class ActupdateComponent implements OnInit {
     });
   }
 
-  onFileSelected(event: Event) {
-    const file = (event.target as HTMLInputElement).files?.[0];
-    if (file) {
-      this.actForm.patchValue({ imageName: file.name });
-      const reader = new FileReader();
-      reader.onload = () => {
-        this.imagePreview = reader.result;
-      };
-      reader.readAsDataURL(file);
+  onFileSelected(event: Event): void {
+    const fileInput = event.target as HTMLInputElement;
+    if (fileInput && fileInput.files) {
+      const file = fileInput.files[0];
+      if (file) {
+        this.fileName = file.name;
+        this.actForm.patchValue({
+          imageName: file.name
+        });
+
+        // 图片预览
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          this.imagePreview = e.target?.result as string | ArrayBuffer | null; // 使用类型断言来处理
+        };
+        reader.readAsDataURL(file);
+      }
     }
   }
 
@@ -82,7 +93,7 @@ export class ActupdateComponent implements OnInit {
   }
 
   insert() {
-    this.router.navigate(['/pages/setmileage']); // 替換為實際的路由路徑
+    this.router.navigate(['/pages/setmileage']); // 替換為實際的路徑
   }
 
   loadact() {
