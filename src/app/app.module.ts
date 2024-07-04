@@ -49,8 +49,9 @@ import { HttpClientModule } from '@angular/common/http';
     DropdownModule,
     FormsModule,
     ReactiveFormsModule, // 添加到 imports 数组中
-    HttpClientModule // 添加到 imports 数组中
-    
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

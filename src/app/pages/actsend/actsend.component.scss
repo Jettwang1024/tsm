@@ -1,35 +1,44 @@
+/* 增加以下样式 */
 .radio-container {
-    display: flex;
-    flex-direction: column;
-  }
+  background-color: #dddfe0; /* 这是淡蓝色的 RGB 代码 */
+  width: 100%;
+  max-width: 100%;
+}
+
+.table-container {
+  width: 100%;
+  max-width: 100%;
+}
+
+/* 修改 table 元素外层的容器宽度 */
+table {
+  width: 100%;
+  max-width: 100%;
+}
+
+/* 适当调整表格内部的样式 */
+.p-table {
+  width: 100%;
+}
+
+/* 设置表格单元格的宽度和样式 */
+.p-datatable-header th, .p-datatable-header td {
+  padding: 8px 10px;
+  text-align: left;
   
-  .radio-group {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-bottom: 20px;
-  }
-  
-  .radio-details {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  
-  .detail-section {
-    background-color: #f0f0f0;
-    padding: 10px;
-    border-radius: 5px;
-    margin-bottom: 10px;
-  }
-  
-  .button-group {
-    display: flex;
-    gap: 10px;
-    margin-top: 20px;
-  }
-  .blue-header th {
-    background-color: rgb(43, 175, 232) !important;
-    color: white !important;
-  }
-  
+}
+/* 新增的样式，使 radio 按钮垂直排列 */
+.radio-group p-radioButton {
+  display: block;
+  margin-bottom: 10px;
+}
+/* 新增的样式，为 radio-details 添加淡蓝色背景 */
+.detail-section {
+  background-color: #e6f7ff; /* 这是淡蓝色的 RGB 代码 */
+  padding: 10px;
+  border-radius: 5px; /* 可选：添加圆角边框 */
+}
+.blue-header th {
+  background-color: rgb(43, 175, 232) !important;
+  color: white !important;
+}

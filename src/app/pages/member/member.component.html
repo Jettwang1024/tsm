@@ -13,7 +13,13 @@
       </tr>
       <tr>
         <td style="width: 10%;">電話號碼:</td>
-        <td style="width: 15%;"><input pInputText type="text" formControlName="phoneNumber" class="p-inputtext" /></td>
+        <td style="width: 15%;">
+          <input pInputText type="text" formControlName="phoneNumber" class="p-inputtext" />
+          <div *ngIf="memberForm?.get('phoneNumber')?.invalid && memberForm?.get('phoneNumber')?.touched">
+            <small *ngIf="memberForm?.get('phoneNumber')?.errors?.['required']">電話號碼是必填項</small>
+            <small *ngIf="memberForm?.get('phoneNumber')?.errors?.['pattern']">電話號碼必須是09開頭的10位數字</small>
+          </div>
+        </td>
         <td style="width: 10%;">註冊日期:</td>
         <td style="width: 15%;"><input pInputText type="text" formControlName="registrationDate" class="p-inputtext" /></td>
         <td style="width: 10%;">區域:</td>

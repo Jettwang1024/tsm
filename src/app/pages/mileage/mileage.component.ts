@@ -19,13 +19,13 @@ export class MileageComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private http: HttpClient) {
     this.productForm = this.fb.group({
-      productId: ['02240012'],
+      productId: ['022400'],
       productAttribute: ['02-里程商品'],
       category: ['預設類別'],
       productName: ['道路救援里程'],
-      issuer: ['預設發行單位'],
+      issuer: ['02全鋒道路救援'],
       serialManagement: ['N'],
-      validDays: ['預設有效天數'],
+      validDays: ['360'],
       denomination: ['1'],
       taxCategory: ['無'],
       remarks: [''],

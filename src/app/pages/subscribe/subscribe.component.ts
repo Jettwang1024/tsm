@@ -53,12 +53,12 @@ export class SubscribeComponent implements OnInit{
 
   onSubmit() {
     const formData = this.product1Form.value;
-    localStorage.setItem('productFormData', JSON.stringify(formData));
+    localStorage.setItem('subscribeFormData', JSON.stringify(formData));
     console.log('Form data saved to local storage:', formData);
   }
   
   loadFormData() {
-    const savedData = localStorage.getItem('productFormData');
+    const savedData = localStorage.getItem('subscribeFormData');
     if (savedData) {
       const formData = JSON.parse(savedData);
       // 确保所有表单控件都有值
