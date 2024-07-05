@@ -11,8 +11,18 @@ body, html {
 }
 
 .form-table td {
-  padding: 10px;
+  padding: 5px; /* 调整内边距以缩小空白 */
   border: none; /* 移除单元格边框 */
+}
+
+.label-cell {
+  width: 10%;
+  text-align: right;
+  padding-right: 5px; /* 增加右侧内边距以缩小空白 */
+}
+
+.input-cell {
+  width: 15%;
 }
 
 .p-inputtext {

@@ -1,5 +1,5 @@
 export interface Unit {
     checked: string;
-    unit: string;
+    unit: boolean;
     unitName: string;
   }

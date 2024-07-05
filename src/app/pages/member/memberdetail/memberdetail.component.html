@@ -3,68 +3,79 @@
     <h2>會員詳情</h2>
     <table class="form-table" style="width: 100%; background-color: rgb(231, 228, 228);">
       <tr>
-        <td style="width: 10%;">會員編號:</td>
-        <td style="width: 15%;"><input pInputText type="text" formControlName="memberId" style="width: 100%;" /></td>
-        <td style="width: 10%;">生日:</td>
-        <td style="width: 15%;"><input pInputText type="text" formControlName="birthday" style="width: 100%;" /></td>
-        <td style="width: 10%;">性別:</td>
-        <td style="width: 15%;"><input pInputText type="text" formControlName="gender" style="width: 100%;" /></td>
+        <td class="label-cell">會員編號:</td>
+        <td class="input-cell"><input pInputText type="text" formControlName="memberId" class="p-inputtext" /></td>
+        <td class="label-cell">生日:</td>
+        <td class="input-cell"><p-calendar formControlName="birthday" dateFormat="yy-mm-dd" placeholder="請選擇生日"></p-calendar></td>
+        <td class="label-cell">性別:</td>
+        <td class="input-cell">
+          <ng-container *ngIf="!isCustomGender; else customGenderInput">
+            <p-dropdown [options]="gender" formControlName="gender" placeholder="請選擇性別" (onChange)="checkGender()"></p-dropdown>
+          </ng-container>
+          <ng-template #customGenderInput>
+            <input pInputText type="text" formControlName="gender" class="p-inputtext" placeholder="請輸入性別" />
+          </ng-template>
+        </td>
       </tr>
       <tr>
-        <td style="width: 10%;">會員暱稱:</td>
-        <td colspan="2" style="width: 25%;"><input pInputText type="text" formControlName="nickname" style="width: 100%;" /></td>
-        <td style="width: 10%;">密碼:</td>
-        <td colspan="2" style="width: 25%;"><input pInputText type="text" formControlName="password" style="width: 100%;" /></td>
+        <td class="label-cell">會員暱稱:</td>
+        <td colspan="2" class="input-cell"><input pInputText type="text" formControlName="nickname" class="p-inputtext" /></td>
+        <td class="label-cell">密碼:</td>
+        <td colspan="2" class="input-cell"><input pInputText type="text" formControlName="password" class="p-inputtext" /></td>
       </tr>
       <tr>
-        <td style="width: 10%;">會員級別:</td>
-        <td colspan="2" style="width: 25%;"><input pInputText type="text" formControlName="memberLevel" style="width: 100%;" /></td>
-        <td style="width: 10%;">狀態:</td>
-        <td colspan="2" style="width: 25%;"><input pInputText type="text" formControlName="status" style="width: 100%;" /></td>
+        <td class="label-cell">會員級別:</td>
+        <td colspan="2" class="input-cell"><input pInputText type="text" formControlName="memberLevel" class="p-inputtext" /></td>
+        <td class="label-cell">狀態:</td>
+        <td colspan="2" class="input-cell"><p-dropdown [options]="memberStatus" formControlName="memberStatus" placeholder="請選擇會員狀態"></p-dropdown></td>
       </tr>
       <tr>
-        <td style="width: 10%;">EMail:</td>
-        <td colspan="2" style="width: 25%;"><input pInputText type="text" formControlName="email" style="width: 100%;" /></td>
-        <td style="width: 10%;">電話:</td>
-        <td colspan="2" style="width: 25%;"><input pInputText type="text" formControlName="phoneNumber" style="width: 100%;" /></td>
+        <td class="label-cell">EMail:</td>
+        <td colspan="2" class="input-cell"><input pInputText type="text" formControlName="email" class="p-inputtext" /></td>
+        <td class="label-cell">電話:</td>
+        <td colspan="2" class="input-cell"><input pInputText type="text" formControlName="phoneNumber" class="p-inputtext" /></td>
       </tr>
       <tr>
-        <td style="width: 10%;">婚姻狀況:</td>
-        <td colspan="2" style="width: 25%;"><input pInputText type="text" formControlName="maritalStatus" style="width: 100%;" /></td>
-        <td style="width: 10%;">行動電話:</td>
-        <td colspan="2" style="width: 25%;"><input pInputText type="text" formControlName="mobilePhone" style="width: 100%;" /></td>
+        <td class="label-cell">婚姻狀況:</td>
+        <td colspan="2" class="input-cell"><p-dropdown [options]="maritalStatus" formControlName="maritalStatus" placeholder="請選擇婚姻狀況"></p-dropdown></td>
+        <td class="label-cell">行動電話:</td>
+        <td colspan="2" class="input-cell"><input pInputText type="text" formControlName="mobilePhone" class="p-inputtext" (input)="onMobilePhoneInput()" /></td>
+        <div *ngIf="memberDetailForm.get('mobilePhone')?.invalid && memberDetailForm.get('mobilePhone')?.touched">
+          <small *ngIf="memberDetailForm.get('mobilePhone')?.errors?.['pattern']">電話號碼必須是09開頭的10位數字</small>
+          <small *ngIf="memberDetailForm.get('mobilePhone')?.errors?.['maxlength']">電話號碼最多10位數</small>
+        </div>
       </tr>
       <tr>
-        <td style="width: 10%;">教育狀況:</td>
-        <td colspan="2" style="width: 25%;"><input pInputText type="text" formControlName="education" style="width: 100%;" /></td>
-        <td style="width: 10%;">任職公司:</td>
-        <td colspan="2" style="width: 25%;"><input pInputText type="text" formControlName="company" style="width: 100%;" /></td>
+        <td class="label-cell">教育狀況:</td>
+        <td colspan="2" class="input-cell"><input pInputText type="text" formControlName="education" class="p-inputtext" /></td>
+        <td class="label-cell">任職公司:</td>
+        <td colspan="2" class="input-cell"><input pInputText type="text" formControlName="company" class="p-inputtext" /></td>
       </tr>
       <tr>
-        <td style="width: 10%;">圖檔:</td>
-        <td colspan="2" style="width: 25%;"><input pInputText type="text" formControlName="imageFile" style="width: 100%;" /></td>
-        <td style="width: 10%;">UUID:</td>
-        <td colspan="2" style="width: 25%;"><input pInputText type="text" formControlName="uuid" style="width: 100%;" /></td>
+        <td class="label-cell">圖檔:</td>
+        <td colspan="2" class="input-cell"><input pInputText type="text" formControlName="imageFile" class="p-inputtext" /></td>
+        <td class="label-cell">UUID:</td>
+        <td colspan="2" class="input-cell"><input pInputText type="text" formControlName="uuid" class="p-inputtext" /></td>
       </tr>
       <tr>
-        <td style="width: 10%;">備註:</td>
-        <td colspan="5" style="width: 90%;"><input pInputText type="text" formControlName="remarks" style="width: 100%;" /></td>
+        <td class="label-cell">備註:</td>
+        <td colspan="5" class="input-cell"><input pInputText type="text" formControlName="remarks" class="p-inputtext" /></td>
       </tr>
     </table>
 
     <div style="display: flex; justify-content: center; margin-top: 20px;">
       <table class="form-table" border="3" style="width: 70%; background-color: pink;" [formGroup]="recommenderForm">
         <tr>
-          <td style="width: 10%;">註冊日期:</td>
-          <td style="width: 15%;"><input pInputText type="text" formControlName="registrationDate" style="width: 100%;" /></td>
-          <td style="width: 10%;">註冊單位:</td>
-          <td style="width: 15%;"><input pInputText type="text" formControlName="registrationUnit" style="width: 100%;" /></td>
+          <td class="label-cell">註冊日期:</td>
+          <td class="input-cell"><p-calendar formControlName="registrationDate" dateFormat="yy-mm-dd" placeholder="註冊日期"></p-calendar></td>
+          <td class="label-cell">註冊單位:</td>
+          <td class="input-cell"><input pInputText type="text" formControlName="registrationUnit" class="p-inputtext" /></td>
         </tr>
         <tr>
-          <td style="width: 10%;">推薦人:</td>
-          <td style="width: 15%;"><input pInputText type="text" formControlName="recommender" style="width: 100%;" /></td>
-          <td style="width: 10%;">推薦碼:</td>
-          <td style="width: 15%;"><input pInputText type="text" formControlName="referralCode" style="width: 100%;" /></td>
+          <td class="label-cell">推薦人:</td>
+          <td class="input-cell"><input pInputText type="text" formControlName="recommender" class="p-inputtext" /></td>
+          <td class="label-cell">推薦碼:</td>
+          <td class="input-cell"><input pInputText type="text" formControlName="referralCode" class="p-inputtext" /></td>
         </tr>
       </table>
     </div>

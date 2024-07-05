@@ -1,21 +1,21 @@
 <div class="radio-container">
   <div class="radio-group">
-    <p-radioButton name="info" value="gender" label="性別" [(ngModel)]="selectedInfo" (onClick)="onRadioSelect()"></p-radioButton>
-    <p-radioButton name="info" value="phone" label="手機號碼" [(ngModel)]="selectedInfo" (onClick)="onRadioSelect()"></p-radioButton>
-    <p-radioButton name="info" value="birthday" label="生日" [(ngModel)]="selectedInfo" (onClick)="onRadioSelect()"></p-radioButton>
-    <p-radioButton name="info" value="address" label="地址" [(ngModel)]="selectedInfo" (onClick)="onRadioSelect()"></p-radioButton>
-    <p-radioButton name="info" value="registrationDate" label="註冊日期區間" [(ngModel)]="selectedInfo" (onClick)="onRadioSelect()"></p-radioButton>
-    <p-radioButton name="info" value="lastLoginDate" label="最後登入日期區間" [(ngModel)]="selectedInfo" (onClick)="onRadioSelect()"></p-radioButton>
-    <p-radioButton name="info" value="memberStatus" label="會員狀態" [(ngModel)]="selectedInfo" (onClick)="onRadioSelect()"></p-radioButton>
-    <p-radioButton name="info" value="spendingAmount" label="消費金額額度區間" [(ngModel)]="selectedInfo" (onClick)="onRadioSelect()"></p-radioButton>
-    <p-radioButton name="info" value="firstSubscriptionGift" label="首次訂閱大禮包" [(ngModel)]="selectedInfo" (onClick)="onRadioSelect()"></p-radioButton>
+    <p-radioButton name="info" value="gender" label="性別" [ngModel]="selectedInfo" (ngModelChange)="selectedInfo = $event; onRadioSelect()"></p-radioButton>
+    <p-radioButton name="info" value="phone" label="手機號碼" [ngModel]="selectedInfo" (ngModelChange)="selectedInfo = $event; onRadioSelect()"></p-radioButton>
+    <p-radioButton name="info" value="birthday" label="生日" [ngModel]="selectedInfo" (ngModelChange)="selectedInfo = $event; onRadioSelect()"></p-radioButton>
+    <p-radioButton name="info" value="address" label="地址" [ngModel]="selectedInfo" (ngModelChange)="selectedInfo = $event; onRadioSelect()"></p-radioButton>
+    <p-radioButton name="info" value="registrationDate" label="註冊日期區間" [ngModel]="selectedInfo" (ngModelChange)="selectedInfo = $event; onRadioSelect()"></p-radioButton>
+    <p-radioButton name="info" value="lastLoginDate" label="最後登入日期區間" [ngModel]="selectedInfo" (ngModelChange)="selectedInfo = $event; onRadioSelect()"></p-radioButton>
+    <p-radioButton name="info" value="memberStatus" label="會員狀態" [ngModel]="selectedInfo" (ngModelChange)="selectedInfo = $event; onRadioSelect()"></p-radioButton>
+    <p-radioButton name="info" value="spendingAmount" label="消費金額額度區間" [ngModel]="selectedInfo" (ngModelChange)="selectedInfo = $event; onRadioSelect()"></p-radioButton>
+    <p-radioButton name="info" value="firstSubscriptionGift" label="首次訂閱大禮包" [ngModel]="selectedInfo" (ngModelChange)="selectedInfo = $event; onRadioSelect()"></p-radioButton>
   </div>
 
   <div class="radio-details">
     <div *ngIf="selectedInfo === 'gender'" class="detail-section">
-      <p-radioButton name="gender" value="male" label="男" [(ngModel)]="formData.gender"></p-radioButton>
-      <p-radioButton name="gender" value="female" label="女" [(ngModel)]="formData.gender"></p-radioButton>
-      <p-radioButton name="gender" value="unknown" label="未知" [(ngModel)]="formData.gender"></p-radioButton>
+      <p-radioButton name="gender" value="male" label="男" [ngModel]="formData.gender" (ngModelChange)="formData.gender = $event"></p-radioButton>
+      <p-radioButton name="gender" value="female" label="女" [ngModel]="formData.gender" (ngModelChange)="formData.gender = $event"></p-radioButton>
+      <p-radioButton name="gender" value="unknown" label="未知" [ngModel]="formData.gender" (ngModelChange)="formData.gender = $event"></p-radioButton>
     </div>
     <div *ngIf="selectedInfo === 'phone'" class="detail-section">
       <input pInputText type="text" [(ngModel)]="formData.phoneNumber" placeholder="0987654321" />
@@ -39,8 +39,8 @@
       <p-calendar [(ngModel)]="formData.lastLoginEnd" dateFormat="yy-mm-dd" placeholder="結束日"></p-calendar>
     </div>
     <div *ngIf="selectedInfo === 'memberStatus'" class="detail-section">
-      <p-radioButton name="memberStatus" value="subscribed" label="訂閱" [(ngModel)]="formData.memberStatus"></p-radioButton>
-      <p-radioButton name="memberStatus" value="free" label="免費" [(ngModel)]="formData.memberStatus"></p-radioButton>
+      <p-radioButton name="memberStatus" value="訂閱" label="訂閱" [ngModel]="formData.memberStatus" (ngModelChange)="formData.memberStatus = $event"></p-radioButton>
+      <p-radioButton name="memberStatus" value="免費" label="免費" [ngModel]="formData.memberStatus" (ngModelChange)="formData.memberStatus = $event"></p-radioButton>
     </div>
     <div *ngIf="selectedInfo === 'spendingAmount'" class="detail-section">
       <input pInputText type="text" [(ngModel)]="formData.spendingStart" placeholder="金額起始" />
@@ -57,7 +57,7 @@
 </div>
 
 <div class="table-container">
-  <p-table [value]="actupdatetable" [(selection)]="selectedActupdate" selectionMode="multiple" dataKey="id" styleClass="p-datatable-header">
+  <p-table [value]="filteredTable" [(selection)]="selectedActupdate" selectionMode="multiple" dataKey="id" styleClass="p-datatable-header">
     <ng-template pTemplate="header">
       <tr class="blue-header">
         <th style="width: 3em">
@@ -97,4 +97,4 @@
   </p-table>
 </div>
 
-<h3>符合篩選人數計5,000人</h3>
+<h3>符合篩選人數計{{ getTotalRows() }}人</h3>

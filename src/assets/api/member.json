@@ -1,32 +1,122 @@
 [
   {
     "memberID": "001",
-    "nickname": "John Doe",
-    "birthdayMonth": "01-1990",
-    "phoneNumber": "1234567890",
-    "mobileNumber": "0987654321",
-    "registrationUnit": "Unit A",
+    "nickname": "強尼",
+    "birthday": "1990-01-09",
+    "phoneNumber": "0911456789",
+    "mobileNumber": "0911456789",
+    "registrationUnit": "01洗精寶",
     "registrationDate": "2020-01-01",
-    "region": "Region 1"
+    "region": "台南"
   },
   {
     "memberID": "002",
-    "nickname": "Jane Doe",
-    "birthdayMonth": "02-1992",
-    "phoneNumber": "2345678901",
-    "mobileNumber": "0876543219",
-    "registrationUnit": "Unit B",
+    "nickname": "帥傑",
+    "birthday": "1991-02-23",
+    "phoneNumber": "0988456789",
+    "mobileNumber": "0988456789",
+    "registrationUnit": "01洗精寶",
     "registrationDate": "2021-02-01",
-    "region": "Region 2"
+    "region": "台中"
   },
   {
     "memberID": "003",
-    "nickname": "Wang",
-    "birthdayMonth": "02-1992",
-    "phoneNumber": "2345678901",
-    "mobileNumber": "0876543219",
-    "registrationUnit": "Unit B",
-    "registrationDate": "2021-02-01",
-    "region": "Region 2"
+    "nickname": "老王",
+    "birthday": "1992-03-14",
+    "phoneNumber": "0961123456",
+    "mobileNumber": "0961123456",
+    "registrationUnit": "01洗精寶",
+    "registrationDate": "2021-03-01",
+    "region": "台北"
+  },
+  {
+    "memberID": "004",
+    "nickname": "阿明",
+    "birthday": "1993-04-12",
+    "phoneNumber": "0923456789",
+    "mobileNumber": "0923456789",
+    "registrationUnit": "01洗精寶",
+    "registrationDate": "2022-04-01",
+    "region": "高雄"
+  },
+  {
+    "memberID": "005",
+    "nickname": "小美",
+    "birthday": "1994-05-05",
+    "phoneNumber": "0912345678",
+    "mobileNumber": "0912345678",
+    "registrationUnit": "01洗精寶",
+    "registrationDate": "2023-05-01",
+    "region": "新竹縣"
+  },
+  {
+    "memberID": "006",
+    "nickname": "阿華",
+    "birthday": "1995-06-21",
+    "phoneNumber": "0919876543",
+    "mobileNumber": "0919876543",
+    "registrationUnit": "01洗精寶",
+    "registrationDate": "2024-06-01",
+    "region": "桃園縣"
+  },
+  {
+    "memberID": "007",
+    "nickname": "大頭",
+    "birthday": "1996-07-30",
+    "phoneNumber": "0934567890",
+    "mobileNumber": "0934567890",
+    "registrationUnit": "01洗精寶",
+    "registrationDate": "2025-07-01",
+    "region": "彰化縣"
+  },
+  {
+    "memberID": "008",
+    "nickname": "阿福",
+    "birthday": "1997-08-15",
+    "phoneNumber": "0922233444",
+    "mobileNumber": "0922233444",
+    "registrationUnit": "01洗精寶",
+    "registrationDate": "2026-08-01",
+    "region": "基隆"
+  },
+  {
+    "memberID": "009",
+    "nickname": "小強",
+    "birthday": "1998-09-18",
+    "phoneNumber": "0933456789",
+    "mobileNumber": "0933456789",
+    "registrationUnit": "01洗精寶",
+    "registrationDate": "2027-09-01",
+    "region": "嘉義縣"
+  },
+  {
+    "memberID": "010",
+    "nickname": "小李",
+    "birthday": "1999-10-25",
+    "phoneNumber": "0945678901",
+    "mobileNumber": "0945678901",
+    "registrationUnit": "01洗精寶",
+    "registrationDate": "2028-10-01",
+    "region": "台東縣"
+  },
+  {
+    "memberID": "011",
+    "nickname": "阿松",
+    "birthday": "2000-11-11",
+    "phoneNumber": "0956789012",
+    "mobileNumber": "0956789012",
+    "registrationUnit": "01洗精寶",
+    "registrationDate": "2029-11-01",
+    "region": "花蓮"
+  },
+  {
+    "memberID": "012",
+    "nickname": "大偉",
+    "birthday": "2001-12-22",
+    "phoneNumber": "0967890123",
+    "mobileNumber": "0967890123",
+    "registrationUnit": "01洗精寶",
+    "registrationDate": "2030-12-01",
+    "region": "宜蘭"
   }
 ]

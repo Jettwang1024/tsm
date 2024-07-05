@@ -2,7 +2,7 @@
 export class Member {
     memberID: string = '';
     nickname: string = '';
-    birthdayMonth: string = '';
+    birthday: string = '';
     registrationUnit: string = '';
     phoneNumber: string = '';
     registrationDate: string = '';

@@ -29,7 +29,6 @@ export class ActupdateComponent implements OnInit {
       expiryStartDate: ['2024-12-01'],
       expiryEndDate: ['2024-12-31'],
       imageName: ['summer_sale.png'],
-      description: ['Join our Summer Sale event and earn 1000 miles!'],
       testCheckbox: [false],
       targets: this.fb.array([]), // 初始化為空數組，稍後動態添加控件
       targetBySerial: [false]
