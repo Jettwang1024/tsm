@@ -21,7 +21,13 @@
         <td class="label-cell">會員暱稱:</td>
         <td colspan="2" class="input-cell"><input pInputText type="text" formControlName="nickname" class="p-inputtext" /></td>
         <td class="label-cell">密碼:</td>
-        <td colspan="2" class="input-cell"><input pInputText type="text" formControlName="password" class="p-inputtext" /></td>
+        <td colspan="2" class="input-cell">
+          <input pInputText type="text" formControlName="password" class="p-inputtext" (blur)="onPasswordBlur()" />
+          <div *ngIf="memberDetailForm.get('password')?.invalid && memberDetailForm.get('password')?.touched">
+            <small *ngIf="memberDetailForm.get('password')?.errors?.['minlength']">密碼必須至少8個字符。</small>
+            <small *ngIf="memberDetailForm.get('password')?.errors?.['passwordStrength']">{{memberDetailForm.get('password')?.errors?.['passwordStrength']}}</small>
+          </div>
+        </td>
       </tr>
       <tr>
         <td class="label-cell">會員級別:</td>
@@ -31,7 +37,7 @@
       </tr>
       <tr>
         <td class="label-cell">EMail:</td>
-        <td colspan="2" class="input-cell"><input pInputText type="text" formControlName="email" class="p-inputtext" /></td>
+        <td colspan="2" class="input-cell"><input pInputText type="text" formControlName="email" class="p-inputtext" (blur)="onEmailBlur()" /></td>
         <td class="label-cell">電話:</td>
         <td colspan="2" class="input-cell"><input pInputText type="text" formControlName="phoneNumber" class="p-inputtext" /></td>
       </tr>
@@ -39,11 +45,7 @@
         <td class="label-cell">婚姻狀況:</td>
         <td colspan="2" class="input-cell"><p-dropdown [options]="maritalStatus" formControlName="maritalStatus" placeholder="請選擇婚姻狀況"></p-dropdown></td>
         <td class="label-cell">行動電話:</td>
-        <td colspan="2" class="input-cell"><input pInputText type="text" formControlName="mobilePhone" class="p-inputtext" (input)="onMobilePhoneInput()" /></td>
-        <div *ngIf="memberDetailForm.get('mobilePhone')?.invalid && memberDetailForm.get('mobilePhone')?.touched">
-          <small *ngIf="memberDetailForm.get('mobilePhone')?.errors?.['pattern']">電話號碼必須是09開頭的10位數字</small>
-          <small *ngIf="memberDetailForm.get('mobilePhone')?.errors?.['maxlength']">電話號碼最多10位數</small>
-        </div>
+        <td colspan="2" class="input-cell"><input pInputText type="text" formControlName="mobilePhone" class="p-inputtext" (blur)="onMobilePhoneBlur()" /></td>
       </tr>
       <tr>
         <td class="label-cell">教育狀況:</td>

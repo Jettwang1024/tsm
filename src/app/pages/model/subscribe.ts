@@ -5,7 +5,7 @@ export const formData = {
     category: '預設類別',
     productName: '預設商品名稱',
     issuingUnit: '02 全鋒道路救援',
-    serialManagement: 'Y(Y=序號管理 N=通用劵)',
+    serman: 'Y(Y=序號管理 N=通用劵)',
     validityDays: '360',
     originalPrice: '360',
     taxStatus: '應稅/免稅',

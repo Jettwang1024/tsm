@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SelectItem } from 'primeng/api';
-import { Actupdatetable, Actupdate } from '../model/actupdate'; // 确保您的模型文件中包含 Actupdatetable 和 Actupdate 接口
+import { Actupdatetable, Actupdate } from '../model/actupdate'; // 確保您的模型文件中包含 Actupdatetable 和 Actupdate 介面
 import { Router } from '@angular/router';
 import { FormBuilder } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
@@ -12,10 +12,15 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ActsendComponent implements OnInit {
 
-  actupdate: Actupdate[] = []; // 改为正确的类型
-  filteredTable: Actupdate[] = []; // 改为正确的类型
+  // 儲存所有 Actupdate 資料的陣列
+  actupdate: Actupdate[] = []; 
+  // 儲存經過篩選的 Actupdate 資料的陣列
+  filteredTable: Actupdate[] = []; 
+  // 儲存選擇的資訊
   selectedInfo: string = '';
-  selectedActupdate: Actupdate[] = []; // 改为正确的类型
+  // 儲存選擇的 Actupdate 資料
+  selectedActupdate: Actupdate[] = []; 
+  // 表單資料
   formData: any = {
     gender: '',
     phoneNumber: '',
@@ -30,42 +35,49 @@ export class ActsendComponent implements OnInit {
     spendingStart: '',
     spendingEnd: ''
   };
+  // 儲存城市資料的陣列
   cities: SelectItem[] = [];
 
+  // 建構子，注入 Router, FormBuilder 和 HttpClient
   constructor(private router: Router, private fb: FormBuilder, private http: HttpClient) {}
 
+  // 初始化函式
   ngOnInit(): void {
-    this.loadActUpdates();
-    this.loadCities();
+    this.loadActUpdates(); // 加載 Actupdate 資料
+    this.loadCities(); // 加載城市資料
   }
 
+  // 加載 Actupdate 資料
   loadActUpdates() {
     this.http.get<Actupdate[]>('/assets/api/actupdate.json').subscribe(data => {
       if (Array.isArray(data)) {
-        this.actupdate = data;
+        this.actupdate = data; // 如果是陣列，直接賦值
       } else if (data && typeof data === 'object') {
-        this.actupdate = [data];
+        this.actupdate = [data]; // 如果是物件，轉成陣列
       } else {
-        console.error('Invalid data format:', data);
+        console.error('Invalid data format:', data); // 錯誤處理
       }
-      this.filteredTable = this.actupdate; // 初始时显示所有数据
+      this.filteredTable = this.actupdate; // 將過濾後的資料設置為所有資料
     }, error => {
-      console.error('讀取錯誤訊息:', error);
+      console.error('讀取錯誤訊息:', error); // 錯誤處理
     });
   }
 
+  // 加載城市資料
   loadCities() {
     this.http.get<SelectItem[]>('/assets/api/cities.json').subscribe(data => {
-      this.cities = data;
+      this.cities = data; // 賦值給 cities
     }, error => {
-      console.error('讀取城市資料錯誤:', error);
+      console.error('讀取城市資料錯誤:', error); // 錯誤處理
     });
   }
 
+  // 當選擇單選按鈕時觸發
   onRadioSelect() {
-    console.log(`Selected info: ${this.selectedInfo}`);
+    console.log(`Selected info: ${this.selectedInfo}`); // 記錄選擇的資訊
   }
 
+  // 清除選擇的資訊和表單資料
   clearSelection() {
     this.selectedInfo = '';
     this.formData = {
@@ -82,22 +94,24 @@ export class ActsendComponent implements OnInit {
       spendingStart: '',
       spendingEnd: ''
     };
-    this.filteredTable = this.actupdate; // 清除时显示所有数据
+    this.filteredTable = this.actupdate; // 重置過濾後的資料
   }
 
+  // 搜尋功能，根據表單資料篩選資料
   search() {
-    // 重置过滤表
-    let result = [...this.actupdate]; // 从原始数据集复制
+    let result = [...this.actupdate]; // 複製 actupdate 陣列
 
-    // 根据选择的筛选条件进行过滤
+    // 根據會員狀態篩選
     if (this.formData.memberStatus) {
       result = result.filter(act => act.memberStatus === this.formData.memberStatus);
     }
 
+    // 根據電話號碼篩選
     if (this.formData.phoneNumber) {
       result = result.filter(act => act.mobilePhone.includes(this.formData.phoneNumber));
     }
 
+    // 根據生日範圍篩選
     if (this.formData.birthdayStart && this.formData.birthdayEnd) {
       result = result.filter(act => {
         const birthday = new Date(act.birthday);
@@ -105,6 +119,7 @@ export class ActsendComponent implements OnInit {
       });
     }
 
+    // 根據註冊日期範圍篩選
     if (this.formData.registrationStart && this.formData.registrationEnd) {
       result = result.filter(act => {
         const registrationDate = new Date(act.registrationDate);
@@ -112,6 +127,7 @@ export class ActsendComponent implements OnInit {
       });
     }
 
+    // 根據最後登入日期範圍篩選
     if (this.formData.lastLoginStart && this.formData.lastLoginEnd) {
       result = result.filter(act => {
         const lastLoginDate = new Date(act.lastLoginDate);
@@ -119,10 +135,12 @@ export class ActsendComponent implements OnInit {
       });
     }
 
+    // 根據城市篩選
     if (this.formData.city) {
       result = result.filter(act => act.region === this.formData.city);
     }
 
+    // 根據消費範圍篩選
     if (this.formData.spendingStart && this.formData.spendingEnd) {
       const spendingStart = parseFloat(this.formData.spendingStart);
       const spendingEnd = parseFloat(this.formData.spendingEnd);
@@ -132,13 +150,15 @@ export class ActsendComponent implements OnInit {
       });
     }
 
-    this.filteredTable = result;
+    this.filteredTable = result; // 更新過濾後的資料
   }
 
+  // 確認選擇的列表
   confirmList() {
-    // 确认名单逻辑
+    // 這裡可以添加處理選擇列表的邏輯
   }
 
+  // 獲取過濾後資料的總行數
   getTotalRows(): number {
     return this.filteredTable.length;
   }

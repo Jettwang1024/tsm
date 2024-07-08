@@ -47,6 +47,9 @@
       ~
       <input pInputText type="text" [(ngModel)]="formData.spendingEnd" placeholder="金額結束" />
     </div>
+    <div *ngIf="selectedInfo === 'firstSubscriptionGift'" class="detail-section">
+      成功了
+    </div>
   </div>
 
   <div class="button-group">

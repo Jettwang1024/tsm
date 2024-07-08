@@ -1,60 +1,63 @@
 body, html {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-  }
-  
-  #product-table {
-    background-color: #f5f3f3; /* 灰色背景 */
-    border: none; /* 移除表格边框 */
-  }
-  
-  .form-table {
-    width: 100%; /* 使表格占满整个宽度 */
-    border-collapse: collapse;
-    margin-top: 20px;
-    border: none; /* 移除表格边框 */
-  }
-  
-  .form-table td, .form-table th {
-    padding: 10px;
-    text-align: left;
-    border: none; /* 移除单元格边框 */
-  }
-  
-  .p-inputtext {
-    width: 100%;
-    padding: 5px;
-    box-sizing: border-box;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  .p-inputtext:focus {
-    border-color: #66afe9;
-    outline: none;
-    box-shadow: 0 0 8px rgba(102, 175, 233, 0.6);
-  }
-  
-  .p-datatable-header {
-    border: 1px solid #ccc;
-    border-collapse: collapse; /* 确保边框样式应用到表格 */
-  }
-  
-  .p-datatable-header .blue-header th,
-  .p-datatable-header tr td {
-    border: 1px solid #ccc; /* 定义单元格边框 */
-    padding: 8px;
-  }
-  
-  .blue-header th {
-    background-color: rgb(43, 175, 232) !important;
-    color: white !important;
-  }
-  
-  /* 自定义 p-table 的边框样式 */
-  .p-datatable-header th, .p-datatable-header td {
-    border: 2px solid #000; /* 更改边框为黑色粗边框 */
-    padding: 10px;
-  }
-  
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+#product-table {
+  background-color: #f5f3f3; /* 灰色背景 */
+  border: none; /* 移除表格边框 */
+}
+
+.form-table {
+  width: 100%; /* 使表格占满整个宽度 */
+  border-collapse: collapse;
+  margin-top: 20px;
+  border: none; /* 移除表格边框 */
+}
+
+.form-table td, .form-table th {
+  padding: 10px;
+  text-align: left;
+  border: none; /* 移除单元格边框 */
+}
+
+.label-cell {
+  white-space: nowrap; /* 防止换行 */
+}
+
+.p-inputtext {
+  width: 100%;
+  padding: 5px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.p-inputtext:focus {
+  border-color: #66afe9;
+  outline: none;
+  box-shadow: 0 0 8px rgba(102, 175, 233, 0.6);
+}
+
+.p-datatable-header {
+  border: 1px solid #ccc;
+  border-collapse: collapse; /* 确保边框样式应用到表格 */
+}
+
+.p-datatable-header .blue-header th,
+.p-datatable-header tr td {
+  border: 1px solid #ccc; /* 定义单元格边框 */
+  padding: 8px;
+}
+
+.blue-header th {
+  background-color: rgb(43, 175, 232) !important;
+  color: white !important;
+}
+
+/* 自定义 p-table 的边框样式 */
+.p-datatable-header th, .p-datatable-header td {
+  border: 2px solid #000; /* 更改边框为黑色粗边框 */
+  padding: 10px;
+}

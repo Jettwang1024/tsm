@@ -2,11 +2,11 @@
 <div class="search-container">
   <table class="form-table" border="0" style="width: 100%;">
     <tr>
-      <td style="width: 10%;">活動編號:</td>
+      <td style="width: 10%;" class="label-cell">活動編號:</td>
       <td style="width: 15%;"><input pInputText type="text" [(ngModel)]="activity.actNumber" style="width: 100%;" /></td>
-      <td style="width: 10%;">活動名稱:</td>
+      <td style="width: 10%;" class="label-cell">活動名稱:</td>
       <td style="width: 15%;"><input pInputText type="text" [(ngModel)]="activity.actName" style="width: 100%;" /></td>
-      <td style="width: 10%;">刊登日期:</td>
+      <td style="width: 10%;" class="label-cell"> 刊登日期:</td>
       <td style="width: 15%;"><p-calendar [(ngModel)]="activity.setDate" dateFormat="yy-mm-dd" [style]="{'width': '100%'}"></p-calendar></td>
       <td colspan="8" style="text-align: right;">
         <button pButton type="button" label="查詢" class="p-button-success" (click)="search()"></button>

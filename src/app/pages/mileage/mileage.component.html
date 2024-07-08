@@ -1,44 +1,44 @@
 <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
   <table id="product-table" class="form-table">
     <tr>
-      <td>商品編號:</td>
+      <td class="label-cell">商品編號:</td>
       <td><input pInputText type="text" formControlName="productId" class="p-inputtext" /></td>
       <td></td>
-      <td>商品屬性:</td>
+      <td class="label-cell">商品屬性:</td>
       <td><input pInputText type="text" formControlName="productAttribute" class="p-inputtext" /></td>
-      <td>類別:</td>
+      <td class="label-cell">類別:</td>
       <td><input pInputText type="text" formControlName="category" class="p-inputtext" /></td>
     </tr>
     <tr>
-      <td>商品名稱:</td>
+      <td class="label-cell">商品名稱:</td>
       <td colspan="6"><input pInputText type="text" formControlName="productName" class="p-inputtext" style="width: 100%;" /></td>
     </tr>
     <tr>
-      <td>發行單位:</td>
+      <td class="label-cell">發行單位:</td>
       <td><input pInputText type="text" formControlName="issuer" class="p-inputtext" /></td>
       <td></td>
-      <td>序號管理:</td>
-      <td colspan="3"><input pInputText type="text" formControlName="serialManagement" class="p-inputtext" style="width: 100%;" /></td>
+      <td class="label-cell">序號管理:</td>
+      <td colspan="3"><p-dropdown [options]="serman" formControlName="serman" placeholder="請選擇"></p-dropdown></td>
     </tr>
     <tr>
-      <td>有效天數:</td>
-      <td><input pInputText type="text" formControlName="validDays" class="p-inputtext" style="width: 100%;" /></td>
+      <td class="label-cell">有效天數:</td>
+      <td><input #validDaysInput pInputText type="text" formControlName="validDays" class="p-inputtext" (blur)="onValidDaysBlur()" style="width: 100%;" /></td>
       <td style="color: red;" colspan="5">領取日起天數</td>
     </tr>
     <tr>
-      <td>面額:</td>
-      <td><input pInputText type="text" formControlName="denomination" class="p-inputtext" style="width: 100%;" /></td>
+      <td class="label-cell">面額:</td>
+      <td><input #denominationInput pInputText type="text" formControlName="denomination" class="p-inputtext" (blur)="onDenominationBlur()" style="width: 100%;" /></td>
       <td style="color: red;">里(KM)</td>
-      <td>售價稅別:</td>
-      <td colspan="3"><input pInputText type="text" formControlName="taxCategory" class="p-inputtext" style="width: 100%;" /></td>
+      <td class="label-cell">售價稅別:</td>
+      <td colspan="3"><p-dropdown [options]="TaxStatus" formControlName="taxCategory" placeholder="選擇稅別"></p-dropdown></td>
     </tr>
     <tr>
-      <td>備註:</td>
+      <td class="label-cell">備註:</td>
       <td colspan="6"><input pInputText type="text" formControlName="remarks" class="p-inputtext" style="width: 100%;" /></td>
     </tr>
     <tr>
       <td colspan="4">
-        <p-table [value]="units" styleClass="p-datatable-header p-table">
+        <p-table [value]="units" selectionMode="multiple" dataKey="unit">
           <ng-template pTemplate="header">
             <tr class="blue-header">
               <th>勾選</th>
@@ -47,13 +47,13 @@
             </tr>
           </ng-template>
           <ng-template pTemplate="body" let-unit>
-            <tr>
-              <td>{{ unit.checked }}</td>
+            <tr [pSelectableRow]="unit">
+              <td><p-tableCheckbox [value]="unit"></p-tableCheckbox></td>
               <td>{{ unit.unit }}</td>
               <td>{{ unit.unitName }}</td>
             </tr>
           </ng-template>
-        </p-table>        
+        </p-table>
       </td>
       <td colspan="2">
         <img src="assets/images/p1.png" alt="示例圖片" style="width: 70%;">

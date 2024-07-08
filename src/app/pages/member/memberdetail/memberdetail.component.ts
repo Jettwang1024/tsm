@@ -17,6 +17,7 @@ export class MemberDetailComponent implements OnInit {
   gender: { label: string, value: string }[] = [];
   memberStatus: { label: string, value: string }[] = [];
   maritalStatus: { label: string, value: string }[] = [];
+  
   isCustomGender: boolean = false;
 
   constructor(
@@ -30,13 +31,13 @@ export class MemberDetailComponent implements OnInit {
       birthday: ['1989/06/04'],
       nickname: ['阿超'],
       memberLevel: ['鑽石'],
-      email: ['superpiestyle@gmail.com'],
+      email: ['', [Validators.email]], // 設定email欄位格式驗證
       maritalStatus: [''],
       education: ['大學'],
       imageFile: ['02440001.jpg'],
       remarks: [''],
-      password: ['*******'],
-      memberStatus: [''], // 确保这里包含 memberStatus
+      password: ['', [Validators.required, Validators.minLength(8), this.passwordValidator]],
+      memberStatus: [''],
       registrationUnit: ['01洗精寶'],
       phoneNumber: ['0900000000'],
       mobilePhone: [
@@ -60,6 +61,7 @@ export class MemberDetailComponent implements OnInit {
 
   ngOnInit() {
     this.loadmember();
+    this.loadSavedData(); // 新增這行以載入localStorage中的數據
   }
 
   initializeGender(): void {
@@ -94,10 +96,12 @@ export class MemberDetailComponent implements OnInit {
   }
 
   save() {
+    const memberDetailData = this.memberDetailForm.value;
+    const recommenderData = this.recommenderForm.value;
+    localStorage.setItem('memberDetailData', JSON.stringify(memberDetailData));
+    localStorage.setItem('recommenderData', JSON.stringify(recommenderData));
+    console.log('Form data saved to local storage:', memberDetailData, recommenderData);
     this.router.navigate(['/pages/member']);
-    const formData = this.memberDetailForm.value;
-    localStorage.setItem('memberDetailData', JSON.stringify(formData));
-    console.log('Form data saved to local storage:', formData);
   }
 
   cancel() {
@@ -113,6 +117,17 @@ export class MemberDetailComponent implements OnInit {
         console.error('Error loading cartail:', error);
       }
     );
+  }
+
+  loadSavedData() {
+    const savedMemberDetailData = localStorage.getItem('memberDetailData');
+    const savedRecommenderData = localStorage.getItem('recommenderData');
+    if (savedMemberDetailData) {
+      this.memberDetailForm.setValue(JSON.parse(savedMemberDetailData));
+    }
+    if (savedRecommenderData) {
+      this.recommenderForm.setValue(JSON.parse(savedRecommenderData));
+    }
   }
 
   onMobilePhoneInput() {
@@ -133,5 +148,40 @@ export class MemberDetailComponent implements OnInit {
       genderControl.clearValidators();
     }
     genderControl.updateValueAndValidity();
+  }
+
+  onEmailBlur() {
+    const emailControl = this.memberDetailForm.get('email');
+    if (emailControl && emailControl.invalid && emailControl.touched) {
+      alert('請輸入有效的 EMAIL 地址。');
+    }
+  }
+
+  onMobilePhoneBlur() {
+    const mobilePhoneControl = this.memberDetailForm.get('mobilePhone');
+    if (mobilePhoneControl && mobilePhoneControl.invalid && mobilePhoneControl.touched) {
+      alert('電話號碼必須是09開頭的10位數字。');
+    }
+  }
+
+  passwordValidator(control: any) {
+    const value = control.value;
+    if (!value) return null;
+    const hasUpperCase = /[A-Z]/.test(value);
+    const hasLowerCase = /[a-z]/.test(value);
+    const hasNumeric = /[0-9]/.test(value);
+    const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(value);
+    const valid = hasUpperCase && hasLowerCase && hasNumeric && hasSpecialChar;
+    if (!valid) {
+      return { passwordStrength: '密碼必須包含大小寫字母、數字和特殊字符。' };
+    }
+    return null;
+  }
+
+  onPasswordBlur() {
+    const passwordControl = this.memberDetailForm.get('password');
+    if (passwordControl && passwordControl.invalid && passwordControl.touched) {
+      alert('密碼必須包含至少8個字符，包括大寫字母、小寫字母、數字和特殊字符。');
+    }
   }
 }

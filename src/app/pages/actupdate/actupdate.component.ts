@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Actupdate, Actupdatetable } from '../model/actupdate';
-import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
+import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -21,7 +21,7 @@ export class ActupdateComponent implements OnInit {
     this.actForm = this.fb.group({
       activityNumber: ['A001'],
       activityName: ['註冊禮'],
-      mileage: ['5'],
+      mileage: ['', [Validators.pattern('^[0-9]*$')]], // 只允許數字輸入
       productNumber: ['01240004道路救援'],
       postingDate: ['2024-06-01'],
       receivingStartDate: ['2024-06-05'],
@@ -65,10 +65,10 @@ export class ActupdateComponent implements OnInit {
           imageName: file.name
         });
 
-        // 图片预览
+        // 圖片預覽
         const reader = new FileReader();
         reader.onload = (e) => {
-          this.imagePreview = e.target?.result as string | ArrayBuffer | null; // 使用类型断言来处理
+          this.imagePreview = e.target?.result as string | ArrayBuffer | null; // 使用類型斷言來處理
         };
         reader.readAsDataURL(file);
       }
@@ -107,5 +107,12 @@ export class ActupdateComponent implements OnInit {
     }, error => {
       console.error('讀取錯誤訊息:', error);
     });
+  }
+
+  onMileageBlur() {
+    const mileageControl = this.actForm.get('mileage');
+    if (mileageControl && mileageControl.invalid && mileageControl.touched) {
+      alert('里程數請輸入數字。');
+    }
   }
 }

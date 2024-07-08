@@ -1,7 +1,7 @@
 <form [formGroup]="actForm">
-  <div style="background-color: rgb(231, 228, 228); padding: 20px; ">
+  <div style="background-color: rgb(231, 228, 228); padding: 20px;">
     <button pButton type="button" label="新增" class="p-button-primary" (click)="insert()" style="margin-bottom: 10px"></button>
-    <table class="form-table" style="background-color: rgb(231, 228, 228); ">
+    <table class="form-table" style="background-color: rgb(231, 228, 228);">
       <tr>
         <td>活動編號:</td>
         <td><input pInputText type="text" formControlName="activityNumber" /></td>
@@ -13,7 +13,7 @@
       <tr>
         <td>里程數:</td>
         <td style="display: flex; align-items: center;">
-          <input pInputText type="text" formControlName="mileage" style="flex-grow: 1; margin-right: 5px;" />
+          <input pInputText type="text" formControlName="mileage" (blur)="onMileageBlur()" style="flex-grow: 1; margin-right: 5px;" />
           <span>km</span>
         </td>
       </tr>
@@ -23,7 +23,7 @@
       </tr>
       <tr>
         <td>刊登日期:</td>
-        <td><input pInputText type="text" formControlName="postingDate" /></td>
+        <td><p-calendar formControlName="postingDate" dateFormat="yy-mm-dd" placeholder="選擇日期"></p-calendar></td>
       </tr>
       <tr>
         <td>領取日期:</td>
@@ -85,7 +85,7 @@
       </tr>
       <tr>
         <td style="width: 50%;">
-          <textarea pInputTextarea class="textarea-large" rows="5" placeholder="內容說明" style="width: 100%;" ></textarea>
+          <textarea pInputTextarea class="textarea-large" rows="5" placeholder="內容說明" style="width: 100%;"></textarea>
         </td>
         <td style="width: 50%; text-align: center;">
           <img *ngIf="imagePreview" [src]="imagePreview" alt="示例圖片" style="max-width: 100%; max-height: 200px;" />

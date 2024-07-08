@@ -2,30 +2,29 @@
   <div class="search-container">
     <table class="form-table">
       <tr>
-        <td style="width: 10%;">會員編號:</td>
+        <td style="width: 10%;" class="label-cell">會員編號:</td>
         <td style="width: 15%;"><input pInputText type="text" formControlName="memberId" class="p-inputtext" /></td>
-        <td style="width: 10%;">會員暱稱:</td>
+        <td style="width: 10%;"class="label-cell">會員暱稱:</td>
         <td style="width: 15%;"><input pInputText type="text" formControlName="nickname" class="p-inputtext" /></td>
-        <td style="width: 10%;">生日月份:</td>
+        <td style="width: 10%;"class="label-cell">生日月份:</td>
         <td style="width: 15%;">
           <p-dropdown [options]="months" formControlName="birthdayMonth" placeholder="選擇月份"></p-dropdown>
         </td>
-        <td style="width: 10%;">註冊單位:</td>
+        <td style="width: 10%;"class="label-cell">註冊單位:</td>
         <td style="width: 15%;"><input pInputText type="text" formControlName="registrationUnit" class="p-inputtext" /></td>
       </tr>
       <tr>
-        <td style="width: 10%;">電話號碼:</td>
+        <td style="width: 10%;"class="label-cell">電話號碼:</td>
         <td style="width: 15%;">
           <input pInputText type="text" formControlName="phoneNumber" class="p-inputtext" />
 
         </td>
-        <td style="width: 10%;">註冊日期:</td>
+        <td style="width: 10%;"class="label-cell">註冊日期:</td>
         <td style="width: 15%;">
           <p-calendar formControlName="registrationDateStart" dateFormat="yy-mm-dd" placeholder="開始日期"></p-calendar>
-          ~
-          <p-calendar formControlName="registrationDateEnd" dateFormat="yy-mm-dd" placeholder="結束日期"></p-calendar>
+          ~  <p-calendar formControlName="registrationDateEnd" dateFormat="yy-mm-dd" placeholder="結束日期"></p-calendar>
         </td>
-        <td style="width: 10%;">區域:</td>
+        <td style="width: 10%;"class="label-cell">區域:</td>
         <td style="width: 15%;">
           <p-dropdown [options]="cities" formControlName="region" placeholder="選擇區域"></p-dropdown>
         </td>

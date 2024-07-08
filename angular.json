@@ -32,7 +32,8 @@
 
               },
                 "src/assets",
-                "src/favicon.ico"
+                "src/favicon.ico",
+                "src/app/pic"  
             ],
             "styles": [
               "src/styles.scss",
@@ -96,6 +97,8 @@
                 "glob": "**/*",
                 "input": "public"
               }
+              ,
+                "src/app/pic"  
             ],
             "styles": [
               "src/styles.scss"
